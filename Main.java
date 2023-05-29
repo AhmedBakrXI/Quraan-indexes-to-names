@@ -129,13 +129,21 @@ public class Main {
 
         };
 
+
         File appFile = new File("src/القرآن الكريم");
         if(appFile.mkdir()){
             System.out.print("Creating Directory: " + appFile.getAbsolutePath());
             Thread.sleep(1000); // All delays are only for view purposes
         }
-        for (int i = 114; i >= 100; i--) {
-            File oldName = new File("src/Quraan/" + i + ".mp3");
+        for (int i = 114; i >= 1; i--) {
+            String formattedNumber = String.valueOf(i);
+            if(formattedNumber.length() < 3){
+                formattedNumber = "0" + formattedNumber;
+            }
+            if(formattedNumber.length() < 3){
+                formattedNumber = "0" + formattedNumber;
+            }
+            File oldName = new File("src/Quraan/" + formattedNumber + ".mp3");
             File newName = new File("src/القرآن الكريم/" + i + ". " + surahNames[i - 1] + ".mp3");
             if(oldName.renameTo(newName)) {
                 System.out.println("Old name: " + oldName.getName());
@@ -143,23 +151,6 @@ public class Main {
                 Thread.sleep(100);
             }
         }
-        for (int i = 99; i >= 10; i--) {
-            File oldName = new File("src/Quraan/0" + i + ".mp3");
-            File newName = new File("src/القرآن الكريم/" + i + ". " + surahNames[i - 1] + ".mp3");
-            if(oldName.renameTo(newName)) {
-                System.out.println("Old name: " + oldName.getName());
-                System.out.println("New name: " + newName.getName());
-                Thread.sleep(100);
-            }
-        }
-        for (int i = 9; i >= 1; i--) {
-            File oldName = new File("src/Quraan/00" + i + ".mp3");
-            File newName = new File("src/القرآن الكريم/" + i + ". " + surahNames[i - 1] + ".mp3");
-            if(oldName.renameTo(newName)) {
-                System.out.println("Old name: " + oldName.getName());
-                System.out.println("New name: " + newName.getName());
-                Thread.sleep(100);
-            }
-        }
+
     }
 }
